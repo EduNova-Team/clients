@@ -34,7 +34,7 @@ export function AppointmentForm({ onClose }: AppointmentFormProps) {
     const formData = new FormData(form)
 
     try {
-      const response = await fetch("https://formsubmit.co/inovamvargas@gmail.com", {
+      const response = await fetch("https://formsubmit.co/clinicamontoyahn@gmail.com", {
         method: "POST",
         body: formData,
       })
@@ -91,7 +91,7 @@ export function AppointmentForm({ onClose }: AppointmentFormProps) {
             <input type="hidden" name="_subject" value="Nueva Solicitud de Consulta - Clínica Montoya" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_next" value={typeof window !== "undefined" ? window.location.origin : ""} />
+            <input type="hidden" name="_next" value="https://www.clinicamontoya.com" />
 
             <div className="grid md:grid-cols-2 gap-5">
               <div className="space-y-2">

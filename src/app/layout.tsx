@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://clinicamontoya.com"),
+  metadataBase: new URL("https://www.clinicamontoya.com"),
   alternates: {
     canonical: "/",
   },
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "Proloterapia en Honduras | Clínica Médica Montoya | Tela, Atlántida",
     description:
       "Especialistas en Proloterapia en Honduras. 30 años de experiencia. Tratamiento efectivo para dolor crónico, artritis reumatoide y lesiones musculoesqueléticas. Ubicados en Tela, Atlántida.",
-    url: "https://clinicamontoya.com",
+    url: "https://www.clinicamontoya.com",
     siteName: "Clínica Médica Montoya",
     locale: "es_HN",
     type: "website",
@@ -87,9 +87,9 @@ export default function RootLayout({
     name: "Clínica Médica Montoya",
     description:
       "Clínica especializada en Proloterapia en Honduras. 30 años de experiencia en medicina regenerativa y tratamiento de dolor crónico.",
-    url: "https://clinicamontoya.com",
+    url: "https://www.clinicamontoya.com",
     telephone: "+50498018671",
-    email: "contacto@clinicamontoya.com",
+    email: "clinicamontoyahn@gmail.com",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Boulevard Venecia, 10 cuadras al norte de Gasolinera Uno",
