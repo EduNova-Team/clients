@@ -20,41 +20,15 @@ export function AppointmentForm({ onClose }: AppointmentFormProps) {
   const [isSuccess, setIsSuccess] = useState(false)
   const [tipoproblema, setTipoproblema] = useState("")
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     if (!tipoproblema) {
+      e.preventDefault()
       alert("Por favor, seleccione el tipo de problema")
       return
     }
-
     setIsSubmitting(true)
-
-    const form = e.currentTarget
-    const formData = new FormData(form)
-
-    try {
-      const response = await fetch("https://formsubmit.co/clinicamontoyahn@gmail.com", {
-        method: "POST",
-        body: formData,
-      })
-
-      if (response.ok) {
-        setIsSuccess(true)
-        form.reset()
-        setTipoproblema("")
-        setTimeout(() => {
-          onClose()
-        }, 3000)
-      } else {
-        throw new Error("Error al enviar el formulario")
-      }
-    } catch (error) {
-      console.error("Error al enviar el formulario:", error)
-      alert("Hubo un error al enviar el formulario. Por favor, intente nuevamente.")
-    } finally {
-      setIsSubmitting(false)
-    }
+    // El formulario se enviará automáticamente usando el action attribute
+    // formsubmit.co redirigirá a la página _next después del envío
   }
 
   if (isSuccess) {
@@ -87,7 +61,12 @@ export function AppointmentForm({ onClose }: AppointmentFormProps) {
             </Button>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form 
+            action="https://formsubmit.co/clinicamontoyahn@gmail.com" 
+            method="POST"
+            onSubmit={handleSubmit} 
+            className="space-y-5"
+          >
             <input type="hidden" name="_subject" value="Nueva Solicitud de Consulta - Clínica Montoya" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
