@@ -22,6 +22,7 @@ import {
   Calendar,
   ArrowRight,
   Instagram,
+  ExternalLink,
 } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { AppointmentForm } from "@/components/appointment-form"
@@ -302,26 +303,44 @@ export default function Home() {
                 title: "Testimonio de Paciente",
                 subtitle: "Caso real de recuperación exitosa",
                 description: "Fue a hacerse cirugía a Estados Unidos pero no le sirvió de nada, tenía que usar bastón pero al trabajar con el Dr. Girón se pudo sanar. Ahora no necesita bastón, puede subir escaleras y lo más importante puede orar de rodillas al Señor",
+                facebookUrl: "https://www.facebook.com/share/v/1JcB9AcoGG/",
               },
               {
                 video: "Exp2.MP4",
                 title: "Recuperación de Artritis Reumatoide",
                 subtitle: "Caso real de recuperación exitosa",
                 description: "María estaba bastante enferma de artritis reumatoide, le dolían las manos, espalda, brazos y pies. Trabajó con la Clinica Medica Montoya y pasó de no poder caminar a caminar con facilidad",
+                facebookUrl: "", // Agregar URL de Facebook aquí cuando esté disponible
               },
               {
                 video: "Exp3.MP4",
                 title: "Alivio del Dolor Crónico",
                 subtitle: "Caso real de recuperación exitosa",
                 description: "Paciente que superó años de dolor en articulaciones y recuperó su calidad de vida",
+                facebookUrl: "", // Agregar URL de Facebook aquí cuando esté disponible
               },
             ].map((testimonial, i) => (
               <Card key={i} className="overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border-2">
-                <div className="aspect-video bg-black">
+                <div className="aspect-video bg-black relative">
                   <video controls className="w-full h-full object-cover">
                     <source src={`/${testimonial.video}`} type="video/mp4" />
                     Su navegador no soporta el elemento de video.
                   </video>
+                  {testimonial.facebookUrl && (
+                    <div className="absolute top-2 right-2">
+                      <a
+                        href={testimonial.facebookUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 shadow-lg transition-colors"
+                      >
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+                        </svg>
+                        Ver en Facebook
+                      </a>
+                    </div>
+                  )}
                 </div>
                 <div className="p-6 bg-white border-t-2 border-border">
                   <div className="flex items-start gap-3 mb-3">
@@ -333,10 +352,57 @@ export default function Home() {
                       <p className="text-xs text-muted-foreground">{testimonial.subtitle}</p>
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{testimonial.description}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">{testimonial.description}</p>
+                  {testimonial.facebookUrl && (
+                    <a
+                      href={testimonial.facebookUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
+                    >
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+                      </svg>
+                      Ver testimonio completo en Facebook
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
                 </div>
               </Card>
             ))}
+          </div>
+
+          <div className="mt-16 text-center">
+            <Card className="p-8 md:p-12 bg-gradient-to-br from-primary/5 via-background to-accent/5 border-2 border-primary/20">
+              <div className="max-w-2xl mx-auto space-y-6">
+                <div className="flex justify-center">
+                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center border-2 border-primary/30">
+                    <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                    ¿Fuiste paciente nuestro?
+                  </h3>
+                  <p className="text-lg text-muted-foreground">
+                    Deja tu comentario en nuestra página de Facebook y ayuda a otros pacientes a conocer los beneficios de la proloterapia en Honduras
+                  </p>
+                </div>
+                <Button
+                  size="lg"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all"
+                  onClick={() => window.open("https://www.facebook.com/alfredo.gironmontoya", "_blank", "noopener,noreferrer")}
+                >
+                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+                  </svg>
+                  Deja tu Comentario en Facebook
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
@@ -475,6 +541,17 @@ export default function Home() {
                   <div>
                     <div className="text-xs text-muted-foreground">Ubicación</div>
                     <div className="font-medium text-foreground">Tela, Atlántida<br />Boulevard Venecia, 10 cuadras al norte de Gasolinera Uno</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 group cursor-pointer">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-xs text-muted-foreground">Facebook</div>
+                    <a href="https://www.facebook.com/alfredo.gironmontoya" target="_blank" rel="noopener noreferrer" className="font-medium text-foreground hover:text-primary transition-colors">Dr. Alfredo Girón Montoya</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 group cursor-pointer">

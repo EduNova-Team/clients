@@ -19,8 +19,14 @@ export function AppointmentForm({ onClose }: AppointmentFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [tipoproblema, setTipoproblema] = useState("")
+  const [ubicacion, setUbicacion] = useState("")
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (!ubicacion) {
+      e.preventDefault()
+      alert("Por favor, seleccione su ubicación")
+      return
+    }
     if (!tipoproblema) {
       e.preventDefault()
       alert("Por favor, seleccione el tipo de problema")
@@ -104,6 +110,28 @@ export function AppointmentForm({ onClose }: AppointmentFormProps) {
                 required
                 placeholder="juan@ejemplo.com"
               />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="ubicacion">Ubicación de la Consulta *</Label>
+              <input 
+                type="hidden" 
+                name="ubicacion" 
+                value={ubicacion === "san-pedro-sula" ? "San Pedro Sula, Honduras" : ubicacion === "tela-atlantida" ? "Tela, Atlántida, Honduras" : ""} 
+                required 
+              />
+              <Select value={ubicacion} onValueChange={setUbicacion} required>
+                <SelectTrigger id="ubicacion">
+                  <SelectValue placeholder="Seleccione su ubicación" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="san-pedro-sula">San Pedro Sula, Honduras</SelectItem>
+                  <SelectItem value="tela-atlantida">Tela, Atlántida, Honduras</SelectItem>
+                </SelectContent>
+              </Select>
+              <p className="text-xs text-muted-foreground mt-1">
+                Seleccione la ubicación donde desea recibir la consulta
+              </p>
             </div>
 
             <div className="space-y-2">

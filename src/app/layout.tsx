@@ -121,7 +121,10 @@ export default function RootLayout({
       "@type": "Country",
       name: "Honduras",
     },
-    sameAs: ["https://instagram.com/clinicamontoya"],
+    sameAs: [
+      "https://www.facebook.com/alfredo.gironmontoya",
+      "https://instagram.com/clinicamontoya",
+    ],
   }
 
   return (
